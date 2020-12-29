@@ -11,7 +11,7 @@ build: use
 	docker buildx build --platform linux/amd64,linux/arm64 -t public.ecr.aws/x3l4a9v5/nlb-sidecar-for-ecs\:latest .
 
 build-and-push: use
-	docker buildx build --platform linux/amd64,linux/arm64 -t public.ecr.aws/x3l4a9v5/nlb-sidecar-for-ecs:latest --push .
+	docker buildx build --platform linux/amd64,linux/arm64 -t public.ecr.aws/x3l4a9v5/nlb-sidecar-for-ecs\:latest --push .
 
 build-local:
 	docker build -t public.ecr.aws/x3l4a9v5/nlb-sidecar-for-ecs:local .
