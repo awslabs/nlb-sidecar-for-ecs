@@ -159,7 +159,7 @@ Here is an example Task Definition for Bridge Mode Tasks:
           "value": "web"
         }
       ],
-      "memory": 256,
+      "memory": 64,
       "image": "public.ecr.aws/x3l4a9v5/nlb-sidecar-for-ecs:latest",
       "dependsOn": [
         {
