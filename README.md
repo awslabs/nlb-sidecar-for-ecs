@@ -70,7 +70,7 @@ Here is an example Task Definition with this in use compatible with Fargate:
         }
       ],
       "essential": true,
-      "stopTimeout" : 60,
+      "stopTimeout": 60,
       "logConfiguration": {
         "logDriver": "awslogs",
         "options": {
@@ -135,7 +135,7 @@ Here is an example Task Definition for Bridge Mode Tasks:
       "memory": 256,
       "image": "nginx",
       "essential": true,
-      "stopTimeout" : 60,
+      "stopTimeout": 60,
       "name": "web"
     },
     {
