@@ -2,7 +2,7 @@
 
 This repository contains a Dockerfile and some Python Code that will create a small Python based daemon that will help ensure that your application properly handles an AWS Network Load Balancer in ECS.
 
-You can grab this image under the ECR Public Repository at `public.ecr.aws/x3l4a9v5/nlb-sidecar-for-ecs:latest`
+You can grab this image under the ECR Public Repository at `public.ecr.aws/x3l4a9v5/nlb-sidecar-for-ecs:latest` with a reduced size variant based upon Alpine Linux at `public.ecr.aws/x3l4a9v5/nlb-sidecar-for-ecs:alpine`.
 
 Currently, ECS will keep the task open for the entire deregistration delay, however there is not a way to "prematurely" stop the task allowing for a gracefully handing over any active connections.
 
