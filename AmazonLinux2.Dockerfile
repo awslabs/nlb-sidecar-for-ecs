@@ -8,8 +8,9 @@
 FROM public.ecr.aws/amazonlinux/amazonlinux:2
 RUN mkdir -p /app \
  && yum makecache \
- && yum install amazon-linux-extras \
+ && yum install amazon-linux-extras -y\
  && amazon-linux-extras enable python3.8 \
+ && yum clean metadata \
  && yum install -y python3.8 python3.8-pip \
  && rm /usr/bin/python \
  && ln -s /usr/bin/python3.8 /usr/bin/python3 \

@@ -6,36 +6,36 @@
 #  the License.
 
 VERSION_MAJOR=1.0
-VERSION_MINOR=1.0.1
+VERSION_MINOR=1.0.2
 
 
 .PHONY: build build-local build-local-and-push build-and-push setup	use clean-local clean
 
 build: use
-	docker buildx build --platform linux/amd64,linux/arm64 --file AmazonLinux2.Dockerfile . \
+	docker buildx build --no-cache --pull --platform linux/amd64,linux/arm64 --file AmazonLinux2.Dockerfile . \
           --tag public.ecr.aws/x3l4a9v5/nlb-sidecar-for-ecs\:latest \
           --tag public.ecr.aws/x3l4a9v5/nlb-sidecar-for-ecs\:$(VERSION_MAJOR) \
           --tag public.ecr.aws/x3l4a9v5/nlb-sidecar-for-ecs\:$(VERSION_MINOR) \
           --tag public.ecr.aws/x3l4a9v5/nlb-sidecar-for-ecs\:amazonlinux2
-	docker buildx build --platform linux/amd64,linux/arm64 --file Alpine.Dockerfile . \
+	docker buildx build --no-cache --pull --platform linux/amd64,linux/arm64 --file Alpine.Dockerfile . \
           --tag public.ecr.aws/x3l4a9v5/nlb-sidecar-for-ecs\:$(VERSION_MAJOR)-alpine \
           --tag public.ecr.aws/x3l4a9v5/nlb-sidecar-for-ecs\:$(VERSION_MINOR)-alpine \
           --tag public.ecr.aws/x3l4a9v5/nlb-sidecar-for-ecs\:alpine
 
 build-and-push: use
-	docker buildx build --platform linux/amd64,linux/arm64 --file AmazonLinux2.Dockerfile --push . \
+	docker buildx build --no-cache --pull --platform linux/amd64,linux/arm64 --file AmazonLinux2.Dockerfile --push . \
           --tag public.ecr.aws/x3l4a9v5/nlb-sidecar-for-ecs\:latest \
           --tag public.ecr.aws/x3l4a9v5/nlb-sidecar-for-ecs\:$(VERSION_MAJOR) \
           --tag public.ecr.aws/x3l4a9v5/nlb-sidecar-for-ecs\:$(VERSION_MINOR) \
           --tag public.ecr.aws/x3l4a9v5/nlb-sidecar-for-ecs\:amazonlinux2
-	docker buildx build --platform linux/amd64,linux/arm64 --file Alpine.Dockerfile --push . \
+	docker buildx build --no-cache --pull --platform linux/amd64,linux/arm64 --file Alpine.Dockerfile --push . \
           --tag public.ecr.aws/x3l4a9v5/nlb-sidecar-for-ecs\:$(VERSION_MAJOR)-alpine \
           --tag public.ecr.aws/x3l4a9v5/nlb-sidecar-for-ecs\:$(VERSION_MINOR)-alpine \
           --tag public.ecr.aws/x3l4a9v5/nlb-sidecar-for-ecs\:alpine
 
 build-local:
-	docker build --file AmazonLinux2.Dockerfile --tag public.ecr.aws/x3l4a9v5/nlb-sidecar-for-ecs:local .
-	docker build --file Alpine.Dockerfile --tag public.ecr.aws/x3l4a9v5/nlb-sidecar-for-ecs:local-alpine .
+	docker build --no-cache --pull --file AmazonLinux2.Dockerfile --tag public.ecr.aws/x3l4a9v5/nlb-sidecar-for-ecs:local .
+	docker build --no-cache --pull --file Alpine.Dockerfile --tag public.ecr.aws/x3l4a9v5/nlb-sidecar-for-ecs:local-alpine .
 
 build-local-and-push: build-local
 	docker tag public.ecr.aws/x3l4a9v5/nlb-sidecar-for-ecs:local $(LOCALPUSHTOO):amazonlinux
