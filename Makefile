@@ -39,8 +39,8 @@ build-and-push: use
           --tag $(LOCALPUSHTOO):alpine
 
 build-local: use
-	docker buildx build  --pull --file AmazonLinux2.Dockerfile --tag public.ecr.aws/x3l4a9v5/nlb-sidecar-for-ecs:local .
-	docker buildx build  --pull --file Alpine.Dockerfile --tag public.ecr.aws/x3l4a9v5/nlb-sidecar-for-ecs:local-alpine .
+	docker buildx build --pull --platform linux/amd64,linux/arm6 --file AmazonLinux2.Dockerfile --tag public.ecr.aws/x3l4a9v5/nlb-sidecar-for-ecs:local .
+	docker buildx build --pull --platform linux/amd64,linux/arm6 --file Alpine.Dockerfile --tag public.ecr.aws/x3l4a9v5/nlb-sidecar-for-ecs:local-alpine .
 
 build-local-and-push: use
 	docker buildx build --pull --push --platform linux/amd64,linux/arm64 --file AmazonLinux2.Dockerfile --tag $(LOCALPUSHTOO):local-amazonlinux .
