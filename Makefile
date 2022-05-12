@@ -6,7 +6,7 @@
 #  the License.
 
 VERSION_MAJOR=1.0
-VERSION_MINOR=1.0.3
+VERSION_MINOR=1.0.4
 
 
 .PHONY: build build-local build-local-and-push build-and-push setup	use clean-local clean
