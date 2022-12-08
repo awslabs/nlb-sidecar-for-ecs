@@ -1,0 +1,47 @@
+version: 0.1
+
+repository:
+  path: public.ecr.aws/aws-se/nlb-sidecar-for-ecs
+  about: !file README.md
+  usage: !file USAGE.md
+  image: !file sidecar.png
+  description: >
+    Daemon to be run in a SideCar that will monitor an AWS NLB for the target becoming "draining" and force a clean 
+    exit of the main application.
+  content-types:
+    operating-systems:
+      - Linux
+    architectures:
+      - ARM 64
+      - x86-64
+  platforms:
+  - linux/amd64
+  - linux/arm64
+  semantic:
+    major: 1
+    minor: 0
+  images:
+    - dockerfile: AmazonLinux2.Dockerfile
+      tags:
+        - type: static
+          options:
+            static:
+              - latest
+              - amazonlinux2
+        - type: semantic
+          options:
+            exclude:
+              - MAJOR
+    - dockerfile: Alpine.Dockerfile
+      tags:
+        - type: static
+          options:
+            static:
+              - alpine
+        - type: semantic
+          options:
+            exclude:
+              - MAJOR
+            suffix:
+              - alpine
+
