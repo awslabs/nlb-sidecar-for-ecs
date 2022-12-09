@@ -50,7 +50,7 @@ Here is an example Task Definition with this in use compatible with Fargate:
     },
     {
       "name": "sidecar",
-      "image": "public.ecr.aws/x3l4a9v5/nlb-sidecar-for-ecs:latest",
+      "image": "public.ecr.aws/aws-se/nlb-sidecar-for-ecs:latest",
       "essential": true,
       "environment" : [
         {
@@ -130,7 +130,7 @@ Here is an example Task Definition for Bridge Mode Tasks:
         }
       ],
       "memory": 64,
-      "image": "public.ecr.aws/x3l4a9v5/nlb-sidecar-for-ecs:latest",
+      "image": "public.ecr.aws/aws-se/nlb-sidecar-for-ecs:latest",
       "dependsOn": [
         {
           "containerName": "web",
