@@ -11,12 +11,10 @@ RUN mkdir -p /app \
  && yum install amazon-linux-extras -y\
  && amazon-linux-extras enable python3.8 \
  && yum clean metadata \
- && yum install -y python3.8 python3.8-pip \
- && rm /usr/bin/python \
- && ln -s /usr/bin/python3.8 /usr/bin/python3 \
- && ln -s /usr/bin/python3.8 /usr/bin/python
+ && yum install python3.8 python3.8-pip -y\
+ && yum clean all
 WORKDIR /app
 COPY requirements.txt ./
-RUN python -m pip install --no-cache-dir -r requirements.txt
+RUN python3.8 -m pip install --no-cache-dir -r requirements.txt
 COPY . .
-CMD [ "python", "./sidecar.py" ]
+CMD [ "python3.8", "./sidecar.py" ]

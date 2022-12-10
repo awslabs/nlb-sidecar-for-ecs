@@ -23,8 +23,9 @@ use:
 	docker buildx use multi-arch
 
 clean-local:
-	docker rmi public.ecr.aws/aws-se/nlb-sidecar-for-ecs:local public.ecr.aws/aws-se/nlb-sidecar-for-ecs:local-alpine ${LOCALPUSHTOO}
+	docker rmi public.ecr.aws/aws-se/nlb-sidecar-for-ecs:local public.ecr.aws/aws-se/nlb-sidecar-for-ecs:local-alpine
 
 clean: clean-local
 	docker rmi public.ecr.aws/aws-se/nlb-sidecar-for-ecs:latest || true
 	docker image prune -f
+	docker buildx prune
